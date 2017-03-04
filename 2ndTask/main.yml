@@ -1,0 +1,70 @@
+---
+- hosts: all
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+
+    - name: Add EPEL repository
+      yum: name=epel-release state=latest
+
+    - name: Upgrade packages
+      yum: name=* state=latest
+
+    - name: Add docker repository
+      yum_repository:
+        name: docker
+        description: Docker Repository
+        baseurl: https://yum.dockerproject.org/repo/main/centos/7/
+        enabled: yes
+        gpgcheck: yes
+        gpgkey: https://yum.dockerproject.org/gpg
+
+    - name: Install docker-engine
+      yum: name=docker-engine state=latest
+
+    - name: Check if filedocker.service exeists
+      stat: path=/usr/lib/systemd/system/docker.service
+      register: docker_file_stat
+
+    - name: Update docker startup settings
+      replace: dest=/usr/lib/systemd/system/docker.service regexp='^ExecStart=.*' replace='ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///run/docker.sock --cluster-store=consul://{{ inventory_hostname }}:8500 '
+      when: docker_file_stat.stat.exists
+      
+
+    - name: Check Docker version
+      shell: docker --version
+      register: docker_version
+    - debug: msg="{{ docker_version.stdout }}"
+      
+    - name: Restart docker
+      shell: systemctl restart docker 
+
+    - name: Install Java
+      yum: name=java-1.8.0-openjdk.x86_64 state=latest
+
+    - name: Ensure dependencies are installed.
+      package:
+        name:
+          - curl
+          - libselinux-python
+        state: installed
+
+    - name: Ensure Jenkins repo is installed.
+      get_url:
+        url: "https://pkg.jenkins.io/redhat/jenkins.repo"
+        dest: /etc/yum.repos.d/jenkins.repo
+
+    - name: Add Jenkins repo GPG key.
+      rpm_key:
+        state: present
+        key: "https://pkg.jenkins.io/redhat/jenkins.io.key"
+  
+    - name: Install Jenkins from repository.
+      package:
+        name: jenkins
+        state: installed
+  
+    - name: Run Jenkins.
+      shell: systemctl start jenkins
+
