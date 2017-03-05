@@ -1,7 +1,7 @@
 # TestTasks
 Description:
 
-1st Task.
+**1st Task.**
 
 Task: Написать REST API приложение у которого будет всего один end-point
 [POST]
@@ -45,7 +45,7 @@ Date: Sun, 05 Mar 2017 11:43:15 GMT
 
 Hello, boris
 
-2nd Task.
+**2nd Task.**
 
 Task: С помощью Vagrant и любого инструмента CM (Chef, Puppet, Ansible)запустить виртуальную машину на которой будет установлен Jenkins и Docker. То есть после выполнения команды Vagrant up на новой машине, с помощью Ansible или Puppet или Chef должен установится Docker и Jenkins. 
 
@@ -65,7 +65,7 @@ What we got:
 
 3. Ansible installs Docker and Jenkins with all requirements.
 
-3rd Task.
+**3rd Task.**
 
 Task: Последней задачей будет, используя REST API Jenkins-a установить необходимые плагины и создать задачу для сборки приложения созданного в пункте 1 в Docker контейнер и публикацию его на Docker hub.
 
