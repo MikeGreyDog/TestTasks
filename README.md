@@ -78,3 +78,5 @@ Result: 3rdTask folder contains: Dockerfile - file which is used by Docker to cr
 Requirements: Jenkins, Docker
 
 Usage: run the jenkins.sh script using the "./jenkins.sh" command from the 3rdStep folder.
+
+Important: before testing you should change the "username", "password" and "JenkinsURL" values in the jenkins.sh script with your own credentials.
