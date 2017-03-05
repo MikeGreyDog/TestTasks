@@ -4,5 +4,5 @@ RUN apt-get -y install python python-pip curl wget
 RUN pip install Flask
 COPY app.py /
 
-RUN cd / && chmod +x app.py && ./app.py > debug.txt 2>&1 &
+RUN cd / && chmod +x app.py 
 
