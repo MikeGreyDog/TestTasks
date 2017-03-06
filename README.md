@@ -73,7 +73,7 @@ Task: Последней задачей будет, используя REST API 
 
 1. Install the "Docker Build and Publish" plugin into the Jenkins via Jenkins REST API;
 
-2. Creates new Jenkins job via Jenkins REST API. Job steps: get sources from the github repository; build new docker image using configuration in the Dockerfile; Publishing new image to the Docker Hub.   
+2. Create new Jenkins job via Jenkins REST API. Job steps: get sources from the github repository; build new docker image using configurations in the Dockerfile; Publish new image to the Docker Hub.   
 
 Requirements: Jenkins, Docker
 
