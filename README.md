@@ -22,28 +22,28 @@ Requirements: python, Flask.
 Usage: run the app.py script using the "_./app.py_" command from the 1stTask folder. In the other terminal window type the POST request in 
 the following format:
 
-_curl -i -H "Content-Type: application/json" -X POST -d '{"username":"USERNAME"}' http://localhost:5000/hello
+_curl -i -H "Content-Type: application/json" -X POST -d '{"username":"USERNAME"}' http://localhost:5000/hello_
 
 Where USERNAME is the name you wish to get in the response.
 
 Request example:
 
-_curl -i -H "Content-Type: application/json" -X POST -d '{"username":"boris"}' http://localhost:5000/hello
+_curl -i -H "Content-Type: application/json" -X POST -d '{"username":"boris"}' http://localhost:5000/hello_
 
 Response example:
 
-_HTTP/1.0 200 OK
+_HTTP/1.0 200 OK_
 
-_Content-Type: text/html; charset=utf-8
+_Content-Type: text/html; charset=utf-8_
 
-_Content-Length: 13
+_Content-Length: 13_
 
-_Server: Werkzeug/0.11.15 Python/2.7.12
+_Server: Werkzeug/0.11.15 Python/2.7.12_
 
-_Date: Sun, 05 Mar 2017 11:43:15 GMT
+_Date: Sun, 05 Mar 2017 11:43:15 GMT_
 
 
-_Hello, boris
+_Hello, boris_
 
 **2nd Task.**
 
